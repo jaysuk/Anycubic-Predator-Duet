@@ -56,7 +56,7 @@ M307 H0 A137.8 C533.3 D1.5 V24.3 B0                       	; Disable bang-bang m
 M143 H0 S125                               					; Set temperature limit for heater 0 to 120C
 
 ; Extruder Heater
-M308 S0 P"eotemp" Y"thermistor" T100000 B4300 C0 R4700							;PT100 Temperature Sensor
+M308 S1 P"e0temp" Y"thermistor" T100000 B4300 C0 R4700							;PT100 Temperature Sensor
 M950 H1 C"e0heat" T1                                		; create nozzle heater output on e0heat and map it to sensor 1
 M305 P1 X200		                						; Set thermistor + ADC parameters for heater 1
 M143 H1 S400                                				; Set temperature limit for heater 1 to 240C
