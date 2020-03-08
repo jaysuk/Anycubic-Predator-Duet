@@ -14,7 +14,7 @@ M666 X0 y0 z0 A0.00 B0.00                               	; Put your endstop adju
 ; Network
 M550 P"Anycubic Predator"                     				; Set machine name
 M551 P""                         							; Set password
-M552 P192.168.1.30 S1                          				; Enable network and acquire dynamic address via DHCP
+M552 P0.0.0.0 S1                          					; Enable network and acquire dynamic address via DHCP
 M586 P0 S1                                  				; Enable HTTP
 M586 P1 S0                                  				; Disable FTP
 M586 P2 S0                                  				; Disable Telnet
@@ -45,7 +45,7 @@ M574 Y2 S1 P"ystop"                                 		; configure active-high en
 M574 Z2 S1 P"zstop"                                 		; configure active-high endstop for high end on Z via pin zstop
 
 ; Z-Probe
-M558 P8 R0.4 F1200 H3 T6000 C"zprobe.in+zprobe.mod"			; Set Z probe type to switch and the dive height + speeds
+M558 P8 H4 F1000 T12000 R0.2 S0.02 A5 C"zprobe.in+zprobe.mod"			; Set Z probe type to switch and the dive height + speeds
 G31 P100 X0 Y0 Z-0.1                    					; Set Z probe trigger value, offset and trigger height
 M557 R175 S16                               				; Define mesh grid
 
@@ -53,13 +53,13 @@ M557 R175 S16                               				; Define mesh grid
 M308 S0 P"bedtemp" Y"thermistor" T100000 B4300 C0 R4700				; Set thermistor + ADC parameters for heater 0
 M950 H0 C"bedheat" T0                               		; create bed heater output on bedheat and map it to sensor 0
 M307 H0 A137.8 C533.3 D1.5 V24.3 B0                       	; Disable bang-bang mode for the bed heater and set PWM limit
-M143 H0 S125                               					; Set temperature limit for heater 0 to 120C
+M143 H0 S120                               					; Set temperature limit for heater 0 to 120C
 
 ; Extruder Heater
 M308 S1 P"e0temp" Y"thermistor" T100000 B4300 C0 R4700							;PT100 Temperature Sensor
 M950 H1 C"e0heat" T1                                		; create nozzle heater output on e0heat and map it to sensor 1
 M305 P1 X200		                						; Set thermistor + ADC parameters for heater 1
-M143 H1 S400                                				; Set temperature limit for heater 1 to 240C
+M143 H1 S240                                				; Set temperature limit for heater 1 to 240C
 
 ; Fans
 M950 F0 C"fan0" Q500                                		; create fan 0 on pin fan0 and set its frequency
